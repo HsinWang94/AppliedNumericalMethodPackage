@@ -3,14 +3,13 @@ obj = GA_Optimzer( );
 obj.LowBound = -1 * ones(1,30);
 obj.HighBound = 1 * ones(1,30);
 obj.obj_function = @ackley;
-epoch = 1000;
-obj.N_Itr = epoch;
+obj.N_Itr = 500;
 tic
-[x,xset]= obj.Optim();
+[x,xset]= obj.Normal_Optim();
 toc
 
-yset = zeros(1,epoch);
-for j = 1 : epoch
-    yset(j) = ackley(xset(:,j));
+yset = zeros(obj.N_Itr,1);
+for j = 1 : obj.N_Itr
+    yset(j) = ackley(xset(j,:));
 end
  plot(yset)
