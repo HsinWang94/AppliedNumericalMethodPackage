@@ -136,15 +136,24 @@ classdef GA_Optimzer < handle
                 end
                 %
                 Parent = Parent(:);
-                newPop = [Parent; Offspring];
+                newPop = [Parent;Offspring];
                 %
-                [~, so] = sort([newPop.Fit], 'ascend');
+                [~, so] = sort([newPop.Fit],'ascend');
                 newPop = newPop(so);
                 %
-                Parent = newPop(1 : obj.N_Pop);
+                Parent = newPop(1:obj.N_Pop);
                 SolutionXset(itr,:) = Parent(1).Gene;
             end
             SolutionX = Parent(1).Gene;
+        end
+        %% Elitist Selection GA
+        function [SolutionX,SolutionXset] = Elitist_Optim(obj)
+        end
+        %% Father-offspring Combined Selection GA
+        function [SolutionX,SolutionXset] = Combined_Optim(obj)
+        end
+        %% Sharing GA
+        function [SolutionX,SolutionXset] = Sharing_Optim(obj)
         end
     end
 end
